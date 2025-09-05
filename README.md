@@ -34,6 +34,6 @@ Run stance and veracity prediction on the formatted dataset.
 (`python src/veracity/veracity_prediction_pydantic.py --dataset_type [maldita or averitec] [--few_shot] [--useStance]`)
 
 ### 2.4. Evaluate obtained predictions: dev.json files of each dataset are the gold datasets.
-Execute: `stance_eval_Maldita.py` for stance evaluation with data from Maldita dataset
-Execute: `veracity_evaluation.py` for veracity prediction with data from AVeriTeC or Maldita (`python src/veracity/veracity_evaluation.py --dataset_type [averitec_dataset or maldita_dataset]`)
+- Execute: `stance_eval_Maldita.py` for stance evaluation with data from Maldita dataset
+- Execute: `veracity_evaluation.py` for veracity prediction with data from AVeriTeC or Maldita (`python src/veracity/veracity_evaluation.py --dataset_type [averitec_dataset or maldita_dataset]`)
    
