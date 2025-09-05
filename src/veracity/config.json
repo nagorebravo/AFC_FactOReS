@@ -1,0 +1,10 @@
+{
+    "models": {
+      "gpt4o": "gpt4o",
+      "llama-3-8b-instruct": "meta-llama/Meta-Llama-3-8B-Instruct",
+      "qwen-2.5-7b-instruct": "Qwen/Qwen2.5-7B-Instruct",
+      "llama-3-70b-instruct": "meta-llama/Meta-Llama-3-70B-Instruct",
+      "qwen-2.5-72b-instruct": "Qwen/Qwen2.5-72B-Instruct"
+    }
+  }
+  
