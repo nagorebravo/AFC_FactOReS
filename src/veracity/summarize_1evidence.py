@@ -18,19 +18,19 @@ from factchecking_api import summarize_evidence
 os.environ["OPENAI_API_KEY"] = "YOUR OPENAI API KEY"
 
 # Cargar datos originales
-with open("maldita_dataset/unique_claims_qs_context_50_2_filtered.json", "r", encoding="utf8") as f:
+with open("factores_dataset/unique_claims_qs_context_50_2_filtered.json", "r", encoding="utf8") as f:
     raw_data = json.load(f)
 
 # Convertir dict a lista con 'id' incluido
 data = [{"id": cid, **info} for cid, info in raw_data.items()]
 
-if os.path.exists("maldita_dataset/unique_claims_qs_context_50_2_summarized.json"):
-    if os.path.getsize("maldita_dataset/unique_claims_qs_context_50_2_summarized.json") == 0:
+if os.path.exists("factores_dataset/unique_claims_qs_context_50_2_summarized.json"):
+    if os.path.getsize("factores_dataset/unique_claims_qs_context_50_2_summarized.json") == 0:
         print("Corrupt empty JSON file found. Deleting it.")
-        os.remove("maldita_dataset/unique_claims_qs_context_50_2_summarized.json")
+        os.remove("factores_dataset/unique_claims_qs_context_50_2_summarized.json")
         annotated_data = {}
     else:
-        with open("maldita_dataset/unique_claims_qs_context_50_2_summarized.json", "r", encoding="utf8") as f:
+        with open("factores_dataset/unique_claims_qs_context_50_2_summarized.json", "r", encoding="utf8") as f:
             annotated_data = json.load(f)
 else:
     annotated_data = {}
@@ -83,7 +83,7 @@ with tqdm(data, desc="Summarizing evidences", total=len(data)) as pbar:
         }
 
         # Save progress to JSON after each claim
-        with open("maldita_dataset/unique_claims_qs_context_50_2_summarized.json", "w", encoding="utf8") as f:
+        with open("factores_dataset/unique_claims_qs_context_50_2_summarized.json", "w", encoding="utf8") as f:
             json.dump(annotated_data, f, indent=4, ensure_ascii=False)
 
         pbar.update(1)
