@@ -272,7 +272,7 @@ def print_with_space(left, right, left_space=45):
 class Evaluator:
 
 
-    maldita_stance_verdicts = [
+    factores_stance_verdicts = [
         "positive",
         "negative",
         "neutral"
@@ -290,7 +290,7 @@ class Evaluator:
             self.pairwise_metric = pairwise_meteor
         
         
-        self.verdicts = self.maldita_stance_verdicts
+        self.verdicts = self.factores_stance_verdicts
         
         
 
@@ -508,7 +508,7 @@ def evaluate_predictions_distribution(predictions_path, true_labels_path):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    #parser.add_argument("--dataset_type", choices=["averitec_dataset", "maldita_dataset"], required=True)
+    #parser.add_argument("--dataset_type", choices=["averitec_dataset", "factores_dataset"], required=True)
 
 
     modes = [
@@ -523,10 +523,10 @@ if __name__ == "__main__":
     ]
 
 
-    dataset = "maldita_dataset"
+    dataset = "factores_dataset"
 
     scorer = Evaluator()
-    labels = scorer.maldita_stance_verdicts
+    labels = scorer.factores_stance_verdicts
     #label_file = os.path.join(dataset, "dev.json")
     LABEL_MAP = {
         "positive": "Pos",
@@ -561,8 +561,8 @@ if __name__ == "__main__":
                     #output_filename = f"{evidences}_result_{model_name}_veracity_evaluation__output.txt"
                     output_filename = filename.replace("_veracity_predictions.json", "_veracity_evaluation_output.txt")
 
-                elif "maldita" in filename:
-                    model_name = "maldita"
+                elif "factores" in filename:
+                    model_name = "factores"
                     #output_filename = f"{evidences}_result_{model_name}_veracity_evaluation__output.txt"
                     output_filename = filename.replace("_veracity_predictions.json", "_veracity_evaluation_output.txt")
                 
