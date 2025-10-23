@@ -66,7 +66,7 @@ To reproduce experimental results:
 
 ### 2.0. Filter Dataset  
 The final JSON output from the notebook is filtered so that we only keep **50 chunks of evidence per question**.  
-- **Filename:** `unique_claims_qs_context_50_filtered.json`
+- **Filename must be:** `unique_claims_qs_context_50_filtered.json`
 
 ### 2.1. Summarize First Evidence  
 For each question, only the first evidence is kept and summarized.  
@@ -79,7 +79,8 @@ Modify the dataset so that each line contains one **claim–question–evidence*
 - **Resulting filename:** `unique_claims_qs_context_50_formatted_per_line.jsonl`
 
 ### 2.3. Perform Stance and Veracity Prediction  
-Run stance and veracity prediction on the formatted dataset.  
+Run stance and veracity prediction on the formatted dataset. For experiments with **AVeriTeC**, we use the baseline development split (`dev.json`) provided by the authors.  
+The file is available in the official [AVeriTeC repository (HuggingFace)](chenxwh/AVeriTeC).
 (`python src/veracity/veracity_prediction_pydantic.py --dataset_type [factores or averitec] [--few_shot] [--useStance]`) 
 
 ### 2.4. Evaluate obtained predictions: dev.json files of each dataset are the gold datasets.
