@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 
-agreement_path = "maldita_dataset/annotation_agreement/"
+agreement_path = "factores_dataset/annotation_agreement/"
 
 
 dfs = []
