@@ -75,15 +75,15 @@ For each question, only the first evidence is kept and summarized.
 
 ### 2.2. Format Dataset (One Evidence per Line)  
 Modify the dataset so that each line contains one **claim–question–evidence** trio.  
-- Execute: `modify_maldita_Evidence_per_line.py`  
+- Execute: `modify_factores_Evidence_per_line.py`  
 - **Resulting filename:** `unique_claims_qs_context_50_formatted_per_line.jsonl`
 
 ### 2.3. Perform Stance and Veracity Prediction  
 Run stance and veracity prediction on the formatted dataset.  
-(`python src/veracity/veracity_prediction_pydantic.py --dataset_type [maldita or averitec] [--few_shot] [--useStance]`) 
+(`python src/veracity/veracity_prediction_pydantic.py --dataset_type [factores or averitec] [--few_shot] [--useStance]`) 
 
 ### 2.4. Evaluate obtained predictions: dev.json files of each dataset are the gold datasets.
 - Note that this is not necessary. Intermediate steps to reproduce FactOReS dev.json, execute: 1. `create_annotation_csv.py` (from JSON format to csv), 2. Manually annotate the dataset, 3. `analyze_annotation_file.py` (check dataset distribution), 4. `calculate_agreement.py` (Inter-Annotation Agreement), 4. `xlsxs_to_json.py` (.xlsxs format to JSON).
-- Execute: `stance_eval_Maldita.py` for stance evaluation with data from FactOReS dataset
-- Execute: `veracity_evaluation.py` for veracity prediction with data from AVeriTeC or Maldita (`python src/veracity/veracity_evaluation.py --dataset_type [averitec_dataset or maldita_dataset]`)
+- Execute: `stance_eval_factores.py` for stance evaluation with data from FactOReS dataset
+- Execute: `veracity_evaluation.py` for veracity prediction with data from AVeriTeC or FactOReS (`python src/veracity/veracity_evaluation.py --dataset_type [averitec_dataset or factores_dataset]`)
    
