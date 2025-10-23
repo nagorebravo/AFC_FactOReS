@@ -265,7 +265,7 @@ class Evaluator:
     ]
 
 
-    maldita_verdicts = [
+    factores_verdicts = [
         "supported",
         "refuted",
         "not enough evidence"
@@ -284,8 +284,8 @@ class Evaluator:
         
         if dataset_type == "averitec":
             self.verdicts = self.averitec_verdicts
-        elif dataset_type == "maldita":
-            self.verdicts = self.maldita_verdicts
+        elif dataset_type == "factores":
+            self.verdicts = self.factores_verdicts
         else:
             raise ValueError(f"Unknown dataset type: {dataset_type}")
         
@@ -503,7 +503,7 @@ def evaluate_predictions_distribution(predictions_path, true_labels_path):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--dataset_type", choices=["averitec_dataset", "maldita_dataset"], required=True)
+    parser.add_argument("--dataset_type", choices=["averitec_dataset", "factores_dataset"], required=True)
 
 
     modes = [
@@ -520,26 +520,17 @@ if __name__ == "__main__":
     "cot_fewshot_noStance_pydantic"
     ]
 
-    '''
-    LABEL_MAP = {
-    "supported": "S",
-    "refuted": "R",
-    "not enough evidence": "N",
-    "conflicting evidence/cherrypicking": "C"
-    }
-    SHORT_LABELS = list(LABEL_MAP.values())
-    FULL_LABELS = list(LABEL_MAP.keys())
-'''
+
 
     dataset = parser.parse_args().dataset_type
 
     
 
 
-    if dataset == "maldita_dataset":
+    if dataset == "factores_dataset":
 
-        scorer = Evaluator(dataset_type="maldita")
-        labels = scorer.maldita_verdicts
+        scorer = Evaluator(dataset_type="factores")
+        labels = scorer.factores_verdicts
         #label_file = os.path.join(dataset, "dev.json")
         LABEL_MAP = {
             "supported": "S",
@@ -585,8 +576,8 @@ if __name__ == "__main__":
                     #output_filename = f"{evidences}_result_{model_name}_veracity_evaluation__output.txt"
                     output_filename = filename.replace("_veracity_predictions.json", "_veracity_evaluation_output.txt")
 
-                elif "maldita" in filename:
-                    model_name = "maldita"
+                elif "factores" in filename:
+                    model_name = "factores"
                     #output_filename = f"{evidences}_result_{model_name}_veracity_evaluation__output.txt"
                     output_filename = filename.replace("_veracity_predictions.json", "_veracity_evaluation_output.txt")
                 
