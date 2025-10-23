@@ -38,9 +38,10 @@ Each entry includes:
         "TOTAL":4,
         "STANCE":"Positive",
         "label":"Supported"
+}
 
 
-In order to 
+Follow these steps in order to recreate the dataset:
 
 ## 1. Generate Dataset
 
@@ -54,6 +55,9 @@ Run the `generate_dataset.ipynb` notebook and follow the steps.
   - LLaMA 3 (8B & 70B Instruct)  
 
 ---
+
+To reproduce experimental results:
+
 
 ## 2. Perform Stance and Veracity Prediction
 
