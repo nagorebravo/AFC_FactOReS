@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.metrics import cohen_kappa_score
 
 # Carga los archivos
-agreement_path = "maldita_dataset/annotation_agreement/"
+agreement_path = "factores_dataset/annotation_agreement/"
 batch_n = "_2" # or "" for the first batch
 df1 = pd.read_excel(agreement_path + "<YOUR ANNOTATED FILENAME HERE>" + batch_n + "_summarized.xlsx", nrows=200)
 df2 = pd.read_excel(agreement_path + "<YOUR SECOND ANNOTATED FILENAME HERE>" + batch_n + "_summarized.xlsx", nrows=200)
