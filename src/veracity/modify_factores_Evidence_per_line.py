@@ -11,9 +11,9 @@ sys.path.append(project_root)
 
 
 file_qs = "unique_claims_qs_context_50_2"
-input_file = f"maldita_dataset/{file_qs}_summarized.json"
-#output_jsonl_file = f"maldita_dataset/{file_qs}_formatted.jsonl"
-output_jsonl_file = f"maldita_dataset/{file_qs}_formatted_per_line.jsonl"
+input_file = f"factores_dataset/{file_qs}_summarized.json"
+#output_jsonl_file = f"factores_dataset/{file_qs}_formatted.jsonl"
+output_jsonl_file = f"factores_dataset/{file_qs}_formatted_per_line.jsonl"
 
 with open(input_file, "r", encoding="utf8") as f:
     raw_data = json.load(f)
