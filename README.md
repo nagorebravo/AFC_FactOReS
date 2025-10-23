@@ -39,7 +39,7 @@ Each entry includes:
         "STANCE":"Positive",
         "label":"Supported"
 }
-'''
+```
 
 ---
 
