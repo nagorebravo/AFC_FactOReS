@@ -2,7 +2,7 @@ import pandas as pd
 import os
 
 # Ruta del archivo Excel
-archivo_excel = 'maldita_dataset/annotation_agreement/<YOUR ANNOTATED FILENAME>.xlsx'  
+archivo_excel = 'factores_dataset/annotation_agreement/<YOUR ANNOTATED FILENAME>.xlsx'  
 
 # Leer el archivo Excel
 df = pd.read_excel(archivo_excel, engine='openpyxl')
@@ -11,7 +11,7 @@ df = pd.read_excel(archivo_excel, engine='openpyxl')
 df = df.rename(columns={'VERACITY': 'label'})
 
 # Ruta donde quieres guardar el JSON
-directorio_salida = 'maldita_dataset/'  # puedes usar un path absoluto si prefieres
+directorio_salida = 'factores_dataset/'  # puedes usar un path absoluto si prefieres
 archivo_json = os.path.join(directorio_salida, 'dev.json')
 
 # Crear el directorio si no existe
