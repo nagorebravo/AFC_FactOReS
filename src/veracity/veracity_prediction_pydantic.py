@@ -36,7 +36,7 @@ with open("src/veracity/config.json", "r") as f:
     config = json.load(f)
 
 def load_dataset(file_path, dataset_type):
-    if dataset_type == "averitec" or dataset_type == "maldita":
+    if dataset_type == "averitec" or dataset_type == "factores":
         examples = []
         with open(file_path, "r", encoding="utf-8") as f:
             for line in f:
@@ -46,7 +46,7 @@ def load_dataset(file_path, dataset_type):
                     except json.JSONDecodeError as e:
                         print(f"Error decoding line:\n{line}\n{e}")
         return examples
-    #elif dataset_type == "maldita":
+    #elif dataset_type == "factores":
     #    with open(file_path, "r", encoding="utf-8") as f:
     #        return json.load(f)
     else:
@@ -59,7 +59,7 @@ def classify_claims_huggingface(dataset, model, dataset_type, output_file=None, 
 
     if dataset_type == "averitec":
         dataset_language = "en"
-    elif dataset_type == "maldita":
+    elif dataset_type == "factores":
         dataset_language = "es"
 
 
@@ -104,7 +104,7 @@ def classify_claims_huggingface(dataset, model, dataset_type, output_file=None, 
                         print(f"Unrecognized veracity label '{veracity_pred.pred_label}'")
                         veracity_pred.pred_label = "Not Enough Evidence"
 
-                elif dataset_type == "maldita":
+                elif dataset_type == "factores":
                     if veracity_pred.pred_label not in ["Supported", "Refuted", "Not Enough Evidence"]:
                         print(f"Unrecognized veracity label '{veracity_pred.pred_label}'")
                         veracity_pred.pred_label = "Not Enough Evidence"
@@ -186,7 +186,7 @@ def classify_claims_openai(dataset, model, dataset_type, output_file=None):
     am.reset_cost()
     if dataset_type == "averitec":
         dataset_language = "en"
-    elif dataset_type == "maldita":
+    elif dataset_type == "factores":
         dataset_language = "es"
 
     with tqdm(total=len(claim_items)) as pbar:
@@ -232,7 +232,7 @@ def classify_claims_openai(dataset, model, dataset_type, output_file=None):
                         print(f"Unrecognized veracity label '{veracity_pred.pred_label}'")
                         veracity_pred.pred_label = "Not Enough Evidence"
 
-                elif dataset_type == "maldita":
+                elif dataset_type == "factores":
                     if veracity_pred.pred_label not in ["Supported", "Refuted", "Not Enough Evidence"]:
                         print(f"Unrecognized veracity label '{veracity_pred.pred_label}'")
                         veracity_pred.pred_label = "Not Enough Evidence"
@@ -280,7 +280,7 @@ def save_results(results, output_file):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--dataset_type", choices=["averitec", "maldita"], required=True)
+    parser.add_argument("--dataset_type", choices=["averitec", "factores"], required=True)
     parser.add_argument("--few_shot", action="store_true")
     parser.add_argument("--cot", action="store_true")
     parser.add_argument("--useStance", action="store_true")
@@ -299,10 +299,10 @@ if __name__ == "__main__":
     #1 base_output_dir = os.path.join("averitec_dataset", "veracity", f"run_{timestamp}")
     #1 os.makedirs(base_output_dir, exist_ok=True)
 
-    dataset_dirs = {"averitec": "averitec_dataset", "maldita": "maldita_dataset"}
+    dataset_dirs = {"averitec": "averitec_dataset", "factores": "factores_dataset"}
     dataset_files = {
         "averitec": ["dev_top_3_rerank_qa.json"],
-        "maldita": ["unique_claims_qs_context_50_formatted_per_line_TOTAL.json"] 
+        "factores": ["unique_claims_qs_context_50_formatted_per_line_TOTAL.json"] 
     }
 
     dataset_dir = dataset_dirs[args.dataset_type]
@@ -355,12 +355,5 @@ if __name__ == "__main__":
                 pipeline=pipeline
             )
 
-            '''    
-            results = classify_claims(
-                dataset,
-                model_key,
-                args.dataset_type,
-                output_file=output_file,
-                pipeline=pipeline if "gpt" not in model_key.lower() else None
-            )'''
+            
             print(f"Finished {model_key} in {mode} mode.")
