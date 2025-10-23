@@ -27,29 +27,6 @@ def construct_prompt_stance(claim, evidence, few_shot=False):
     prompt += f"Claim: {claim}\nEvidence: {evidence}\nStance:"
     return prompt
 
-'''
-def construct_prompt_stance_cot2(claim, evidence, few_shot=False):
-    print("Using CoT...\n")
-    prompt = (
-        "Determine the stance of the evidence with respect to the claim.\n"
-        "Follow these steps to reason through your answer:\n"
-        "1. Identify the main claim being made.\n"
-        "2. Analyze what the provided evidence exactly states.\n"
-        "3. Determine if the evidence:\n"
-        "   - Directly SUPPORTS the claim (Positive)\n"
-        "   - CONTRADICTS or REFUTES the claim (Negative)\n"
-        "   - Neither clearly confirms nor refutes the claim (Neutral)\n"
-        "4. Briefly justify your reasoning.\n"
-        "5. Provide your final stance classification.\n\n"
-        "Response format:\n"
-        "Stance: [Positive/Negative/Neutral]\n\n"
-    )
-    prompt += f"Claim: {claim}\nEvidence: {evidence}\n\n"
-    prompt += "Stance:"
-    
-    return prompt
-    '''
-
 
 
 def construct_prompt_stance_cot(claim, evidence, few_shot=False):
@@ -146,35 +123,6 @@ def construct_prompt_veracity(claim, veracity_labels, few_shot=False):
     prompt += "Veracity Prediction:"
     return prompt
 
-
-
-'''
-def construct_prompt_veracity_cot2(claim, veracity_labels, few_shot=False):
-    print("Using CoT...\n")
-    prompt = (
-        "Determine the veracity of the claim based on the provided questions, evidence, and stances.\n\n"
-        "Follow these steps to reason through your answer:\n"
-        "1. Analyze the main claim being made.\n"
-        "2. Review each piece of evidence and its stance toward the claim.\n"
-        "3. Consider the reliability and relevance of each piece of evidence.\n"
-        "4. Determine if the overall evidence:\n"
-        "   - SUPPORTS the claim (multiple reliable pieces of supporting evidence)\n"
-        "   - REFUTES the claim (reliable evidence contradicting the claim)\n"
-        "   - Provides NOT ENOUGH EVIDENCE to make a determination\n"
-        "   - Shows CONFLICTING/CHERRYPICKING (evidence presents incomplete or contradictory picture)\n"
-        "5. Justify your final veracity prediction classification with reasoning.\n\n"
-        "Response format:\n"
-        "Veracity Prediction: [Supported/Refuted/Not Enough Evidence/Conflicting/Cherrypicking]\n\n"
-    )
-
-    prompt += f"Claim: {claim}\n"
-    for idx, (question, evidence, stance) in enumerate(veracity_labels):
-        prompt += f"Question {idx+1}: {question}\n"
-        prompt += f"Evidence {idx+1}: {evidence}\nStance: {stance}\n"
-    prompt += "\nVeracity Prediction:"
-    
-    return prompt
-'''
 
 
 def construct_prompt_veracity_cot(claim, veracity_labels, few_shot=False):
