@@ -1,7 +1,7 @@
 import json
 import csv
 
-with open('maldita_dataset/unique_claims_qs_context_50_2_summarized.json', 'r', encoding='utf-8') as f:
+with open('factores_dataset/unique_claims_qs_context_50_2_summarized.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 
 rows = []
@@ -31,7 +31,7 @@ for claim_id, content in data.items():
                 }
                 rows.append(row)
 
-with open('maldita_dataset/annotation_context_50_2_summarized.csv', 'w', encoding='utf-8', newline='') as csvfile:
+with open('factores_dataset/annotation_context_50_2_summarized.csv', 'w', encoding='utf-8', newline='') as csvfile:
     fieldnames = ["claim_id", "claim", "question", "summarized_text", "relevance", "critical_what", "critical_who", "critical_where", "critical_when", "critical_how", "objectivity"]
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
     
