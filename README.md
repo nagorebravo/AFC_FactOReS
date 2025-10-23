@@ -1,4 +1,4 @@
-# Multilingual_AFC
+# AFC_FactOReS
 
 This work introduces **FactOReS**, the first publicly available dataset for evidence-based veracity prediction in Spanish, constructed from authentic Spanish-language claims sourced from [Maldita.es](https://maldita.es), a leading Spanish fact-checking organization. We establish performance baselines by systematically applying In-Context Learning (ICL) with Large Language Models (LLMs) to both an established English dataset and our novel Spanish dataset.
 
