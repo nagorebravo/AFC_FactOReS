@@ -85,6 +85,10 @@ The file is available in the official [AVeriTeC repository (HuggingFace)](chenxw
 
 ### 2.4. Evaluate obtained predictions: dev.json files of each dataset are the gold datasets.
 - Note that this is not necessary. Intermediate steps to reproduce FactOReS dev.json, execute: 1. `create_annotation_csv.py` (from JSON format to csv), 2. Manually annotate the dataset, 3. `analyze_annotation_file.py` (check dataset distribution), 4. `calculate_agreement.py` (Inter-Annotation Agreement), 4. `xlsxs_to_json.py` (.xlsxs format to JSON).
+- Execute: `stance_eval_factores.py` for stance evaluation with data from FactOReS dataset
+- Execute: `veracity_evaluation.py` for veracity prediction with data from AVeriTeC or FactOReS (`python src/veracity/veracity_evaluation.py --dataset_type [averitec_dataset or factores_dataset]`)
+
+
 
 
 ---
@@ -93,6 +97,4 @@ This repository includes both code and data under different licenses:
 
 - **Code:** [Apache License 2.0](./LICENSE.md)  
 - **FactOReS dataset:** [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/)  
-- Execute: `stance_eval_factores.py` for stance evaluation with data from FactOReS dataset
-- Execute: `veracity_evaluation.py` for veracity prediction with data from AVeriTeC or FactOReS (`python src/veracity/veracity_evaluation.py --dataset_type [averitec_dataset or factores_dataset]`)
    
