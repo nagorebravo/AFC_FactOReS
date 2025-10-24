@@ -5,6 +5,8 @@ This work introduces **FactOReS**, the first publicly available dataset for evid
 This dataset contains **verifiable claims** paired with **verification questions and contextual evidence snippets** (571 instances in total) in Spanish extracted from online sources.  
 It is designed for the **Automatic Fact-Checking (AFC)** task.
 
+This dataset is released under the Creative Commons Attribution 4.0 International License (CC BY 4.0). Please cite the associated paper and acknowledge Maldita.es as the source of the original fact-checks.
+
 Each entry includes:
 - `claim_id`: unique identifier of the claim  
 - `claim`: textual claim to be verified  
